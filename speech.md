@@ -49,4 +49,4 @@ Well, you might say this type is inhabited by the function `const`, which always
     const :: a -> b -> a
     const a b = a
 
-Looking at this it makes intuitive sense that this would form a proof of the proposition. Both of the arguments to the function are propositions, and by returning the first proposition, "a", we show that "b -> a", since regardless of whether "b" is true or false we can produce "a" when given "a". Explaining it is confusing, but it actually makes a lot of intuitive sense. If you're given "a" and "b", then of course you can prove the proposition "a" from it.
+Looking at this it makes intuitive sense that this would form a proof of the proposition. Both of the arguments to the function are propositions, and by returning the first proposition, `a`, we show that `b -> a`, since regardless of whether `b` is true or false we can produce `a` when given `a`. Explaining it is confusing, but it actually makes a lot of intuitive sense. If you're given `a` and `b`, then of course you can prove the proposition `a` from it.
