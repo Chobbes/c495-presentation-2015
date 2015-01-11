@@ -8,9 +8,9 @@ Okay, so I am going to be talking a bit about formal verification, and in partic
 
 Alright! So, what is formal verification? Tautologically speaking formal verification is the use of formal methods to verify properties of programs, that is "proving programs correct".
 
-Formal verification is inherently appealing. You want things to be correct, and work as intended. Bugs might not matter too much depending on the application, after all it's not the end of the world if your whoopy-cushion app crashes every so often, but maybe it is if the ICBM has an unexpected integer overflow. In many cases bugs can result in serious harm, death, and large expenses. In a world where pretty much every object is a small embedded system it's not absurd to be too paranoid to use an elevator because it might run Java and somebody doesn't like to check their damn null references.
+Formal verification is inherently appealing. You want things to be correct, and work as intended. Bugs might not matter too much depending on the application, after all it's not the end of the world if your whoopy-cushion app crashes every so often, but maybe it is if the ICBM has an unexpected integer overflow. In many cases bugs can result in serious harm, death, and large expenses. In a world where pretty much every object is a small embedded system it's not absurd to be too paranoid to use an elevator because it might run Java and somebody doesn't like to check their damn null references. A related goal is actually that mathematicians want programs to formally verify proofs as well, particularly since any given theory or paper now consists of these massive proofs.
 
-This can be done several ways, such as:
+Formal verification can be done several ways, such as:
 
 - Manual labour (Kidnap mathematicians and make them do your dirty work -- expensive, and error prone)
 - Model checking (essentially boils down to checking every possible state of your program and whether or not it adheres to a possibility -- proof by exhaustion)
