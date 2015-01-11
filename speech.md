@@ -50,3 +50,9 @@ Well, you might say this type is inhabited by the function `const`, which always
     const a b = a
 
 Looking at this it makes intuitive sense that this would form a proof of the proposition. Both of the arguments to the function are propositions, and by returning the first proposition, `a`, we show that `b -> a`, since regardless of whether `b` is true or false we can produce `a` when given `a`. Explaining it is confusing, but it actually makes a lot of intuitive sense. If you're given `a` and `b`, then of course you can prove the proposition `a` from it.
+
+And of course you can write this as a simple lambda term
+
+    (\x : a, y : b. x)
+
+As we know the lambda calculi are very simple, essentially consisting of one axiom (beta reduction), which just acts like replacement. The typed lambda calculi add a bit more pizzazz, but they're pretty much the same. This is how Coq can allow for complicated proof tactics, while still satisfying the de Bruijn criterion. The tactics are merely a means of manipulating lambda terms in an automated and useful fashion. It doesn't matter what the tactics do, even if they're technically "incorrect", because pretty much all Coq does is type checks the generated lambda term.
