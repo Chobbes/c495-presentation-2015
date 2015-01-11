@@ -42,11 +42,11 @@ Of course we have issues with general recursion, so Coq actually requires that a
 
 Let's look at an example of this. Let's say we want to prove A -> B -> A. If you were to provide a function with this type, note that A and B can be ANY type, what must this function be?
 
-??? :: a -> b -> a
+    ??? :: a -> b -> a
 
 Well, you might say this type is inhabited by the function `const`, which always returns the first argument.
 
-const :: a -> b -> a
-const a b = a
+    const :: a -> b -> a
+    const a b = a
 
 Looking at this it makes intuitive sense that this would form a proof of the proposition. Both of the arguments to the function are propositions, and by returning the first proposition, "a", we show that "b -> a", since regardless of whether "b" is true or false we can produce "a" when given "a". Explaining it is confusing, but it actually makes a lot of intuitive sense. If you're given "a" and "b", then of course you can prove the proposition "a" from it.
