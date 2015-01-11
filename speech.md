@@ -40,7 +40,7 @@ It's actually a pretty simple idea. Types are propositions, and any program of t
 
 Of course we have issues with general recursion, so Coq actually requires that all programs terminate. To see why this is an issue, consider if you had a function which loops forever. The type this function returns could be any type whatsoever, which would mean all types are inhabited, so everything becomes inconsistent and horrible. Once you have False = True your system becomes entirely useless.
 
-Let's look at an example of this. Let's say we want to prove A -> B -> A. If you were to provide a function with this type, note that A and B can be ANY type, what must this function be?
+Let's look at an example of this. Let's say we want to prove `A -> B -> A`. If you were to provide a function with this type, note that `A` and `B` can be ANY type, what must this function be?
 
     ??? :: a -> b -> a
 
