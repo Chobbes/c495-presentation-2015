@@ -1,7 +1,31 @@
 \documentclass{beamer}
 
+\usepackage{listings}
+\usepackage{color}
+
+% Colours for syntax highlighting
+\definecolor{syntax_red}{rgb}{0.7, 0.0, 0.0} % For strings
+\definecolor{syntax_green}{rgb}{0.15, 0.5, 0.25} % For comments
+\definecolor{syntax_purple}{rgb}{0.6, 0.0, 0.45} % For keywords
+
+
+% Haskell settings for lstlisting
+\lstset{language=Haskell,
+basicstyle=\ttfamily,
+keywordstyle=\color{syntax_purple}\bfseries,
+stringstyle=\color{syntax_red},
+commentstyle=\color{syntax_green},
+numbers=none,
+numberstyle=\color{black},
+stepnumber=1,
+numbersep=10pt,
+tabsize=4,
+showspaces=false,
+showstringspaces=false}
+
 \author{
   Beck, Calvin\\
+  \email{hobbes@ualberta.ca}
 }
 
 \begin{document}
@@ -11,57 +35,52 @@
   \maketitle
 \end{frame}
 
-\section{What is Formal Verification?}
+\section{Introduction}
 
 \begin{frame}
-  \frametitle{What is Formal Verification?}
+  \frametitle{What is this Talk about?}
 
-  Formal verification is essentially the practice of proving programs behave correctly.
+  Formal verification, mostly! This presentation hopes to address the following:
 
   \begin{itemize}
-  \item Can involve many different levels...
-    \begin{itemize}
-    \item Hardware
-    \item Machine Code
-    \item Higher Level
-    \end{itemize}
+  \item Why should you care / be interested?
+  \item Briefly cover some of the methods.
+  \item Make proof assistants more accessible.
+  \item Give some rough intuitions about how these systems work.
   \end{itemize}
 \end{frame}
 
 
-\section{
+\section{Preface}
 
-\section{Curry-Howard Correspondence}
+\begin{frame}[fragile]
+  \frametitle{Type Signatures}
 
-\begin{frame}
-  
+    \begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
+      x :: A
+    \end{lstlisting}
+
+    \begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
+      (+) :: Integer -> Integer -> Integer
+    \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
-    \begin{itemize}
-        \item Author Contributions\\{\scriptsize(in alphabetical order of first name)}
-            \begin{itemize}
-                \item Adam St. Arnaud:
-                    Haskell Intro Slides, Functional Programming Benefits, Lazy Evaluation
-                \item Calvin Beck:
-                    List Monad, TicTacToe, IO Monad, Editing
-                \item Dylan Ashley:
-                    Functional Programming Definition, History, and Motivation Section
-                \item Hannah Barlow:
-                    Prepared the Python example
-                \item Jed Barlow:
-                    Monad Introduction/Definition Slides, Haskell Maybe and Log Writer examples
-            \end{itemize}
-        \item Resources
-            \begin{itemize}
-                \item \url{haskell.org/haskellwiki/Functional_programming}
-                \item \url{haskell.org/haskellwiki/Introduction#What_is_functional_programming.3F}
-                \item \url{en.wikipedia.org/wiki/Functional_programming}
-                \item \url{cse.chalmers.se/~rjmh/Papers/whyfp.pdf}
-                \item \url{stackoverflow.com/questions/602444/what--is--functional--declarative--and--imperative--programming}
-                \item \url{haskell.cs.yale.edu/wp--content/uploads/2011/01/cs.pdf}
-            \end{itemize}
-    \end{itemize}
+  \frametitle{Type Signatures Continued...}
+
+  \begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
+    id :: a -> a
+  \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Type Signatures Continued...}
+
+  \begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
+    id :: a -> a
+    id x = x
+  \end{lstlisting}
 \end{frame}
 
 \end{document}
