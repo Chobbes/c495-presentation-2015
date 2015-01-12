@@ -18,41 +18,41 @@ Before we begin I'd like to make sure we're all on the same page with respect to
 
   In this talk I'll be using Haskell-style type signatures, so here's a brief introduction. If "x" is an identifier, then
 
-    x :: A
+      x :: A
 
   Means that "x" has the type A. Note that while Haskell uses two colons, Coq actually uses one. This will be mixed a bit in the talk, but it should be clear from context.
 
   In languages like these pretty much everything has a type. Even functions. For instance we might say that addition has the type:
 
-    (+) :: Integer -> Integer -> Integer
+      (+) :: Integer -> Integer -> Integer
 
   This may seem peculiar for some of you, but it literally just means that addition takes these two integers as an argument and produces an integer. The arrows are a common notation in type theory, and there is good reason for it as we shall see.
 
   Also note that a type may be polymorphic. For instance you can have something like
 
-    id :: a -> a
+      id :: a -> a
 
   What this means is that `id` is a function which takes an argument of some type `a`, which could be `Integer`, `String`, or anything you can possibly imagine, and returns a value of that same type. In this case there is only one function which matches this type signature, and that's the identity function which returns its argument.
 
-  id :: a -> a
-  id x = x
+      id :: a -> a
+      id x = x
 
 - Basic lambda calculus:
 
   We'll also need to talk a tiny bit about the lambda calculus throughout. More or less you just need to know that lambda calculus consists of lambda terms which can be
 
   - variables
-  - (\x . t) where 't' is another lambda term (lambda abstraction)
-  - (ts) (application)
+  - `(\x . t)` where '`t`' is another lambda term (lambda abstraction)
+  - `(ts)` (application)
 
   Aside from that you just need to know one thing: lambda calculus is just substitution. For example the id function could be written in lambda calculus like
 
-     (\x . x)
+      (\x . x)
 
   No matter what this is applied to we get the same thing back.
 
-     (\x . x)t
-     t  -- Substituting the x for the t.
+      (\x . x)t
+      t  -- Substituting the x for the t.
 
 
 What it is
