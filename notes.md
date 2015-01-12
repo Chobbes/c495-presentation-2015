@@ -1,6 +1,7 @@
 * The task itself
   - Actually impossible
     + Have to trust the entire software stack.
+      - While this is difficult this part may not actually be impossible for most tasks.
     + Have to trust the hardware.
       - Hard drive failures
       - Solar radiation
@@ -19,7 +20,7 @@
 * What can be done?
   - Manual verification
     + Expensive
-    + Error prone
+    + Error prone (exactly what we're trying to prevent)
     + Necessary due to lack of tools
   - Model checking
     + Good for small pieces of code
@@ -30,9 +31,9 @@
     + Requires due diligence
     + Can be issues with decidability
   - Theorem Proving
-    + Manifests itself as extended type checking, usually
-    + Good reuse.
-    + Manual work required
+    + Intimately related to type checking through C-H correspondence
+    + Good reuse
+    + Manual work required sometimes
     + Can be expensive
     + Provides a good framework for reasoning about code
     
