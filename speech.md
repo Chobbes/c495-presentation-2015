@@ -81,7 +81,9 @@ We're going to focus on higher levels of abstraction for the most part. Proving 
 Examples
 --------
 
-If you're familiar with functional programming in the ML dialects this should be fairly familiar to you. For programming this is not really any different than how 
+If you're familiar with functional programming in the ML dialects this should be fairly familiar to you. This is not terribly different than how you would write a program in Haskell or Ocaml. It's a similar functional style. That said you should be aware that Coq is not Turing complete (as we will discuss later), and as a result you will not be able to express certain programs within it. By default all recursion must be structural, however as long as you can show that a recursion is well-founded then you should be able to implement it in Coq, but you will have to prove it.
+
+Beyond the typical functional programming, Coq supports a tactics based proof assistant. This thing looks really weird until you actually walk through an example, but it essentially boils down to writing down the steps for a math proof. However, in math proofs you often rewrite things explicitly, and you end up with something somewhat readable. The proofs in Coq consist of brief tactics, and it's pretty much impossible to read at first -- you really need to step through the proofs in Coq because it will show you the proof state.
 
 Continuing On...
 ----------------
