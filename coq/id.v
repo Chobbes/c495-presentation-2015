@@ -9,6 +9,6 @@ Definition id1 (A : Type) (x : A) : A :=
 Check id.
 Check id1.
 
-Theorem id2 : forall a, a -> a.
+Theorem id2 : forall A, A -> A.
   apply id1.
 Qed.
