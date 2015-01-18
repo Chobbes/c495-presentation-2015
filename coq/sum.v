@@ -8,14 +8,6 @@ Require Import Coq.Numbers.Natural.Peano.NPeano.
 Definition natSum (n : nat) : nat :=
   (n * (n + 1)) / 2.
 
-Fixpoint downFrom (n:nat) : list nat :=
-  match n with
-    | 0 => [0]
-    | S x => S x :: downFrom x
-  end.
-
-Eval compute in downFrom 10.
-
 Fixpoint regularSum (n : nat) : nat :=
   match n with
     | 0 => 0
