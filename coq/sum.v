@@ -8,16 +8,47 @@ Require Import Coq.Numbers.Natural.Peano.NPeano.
 Definition natSum (n : nat) : nat :=
   (n * (n + 1)) / 2.
 
-Check fold_right.
-
 Fixpoint downFrom (n:nat) : list nat :=
   match n with
     | 0 => [0]
     | S x => S x :: downFrom x
   end.
 
-Definition regularSum (n : nat) : nat :=
-  fold_right (plus) 0 (downFrom n).
+Eval compute in downFrom 10.
+
+Fixpoint regularSum (n : nat) : nat :=
+  match n with
+    | 0 => 0
+    | S n' => n + regularSum n'
+  end.
+
+Theorem natSum_S : forall (n : nat),
+                     natSum (S n) = S n + natSum n.
+Proof.
+  intros n.
+  unfold natSum.
+  replace (S n) with (n + 1).
+
+  rewrite <- Nat.div_add_l.
+  replace ((n + 1) * (n + 1 + 1)) with ((n + 1) * 2 + (n * (n + 1))).
+  reflexivity.
+
+  rewrite <- plus_assoc.
+  simpl.
+  replace (n * (n + 1)) with ((n + 1) * n).
+  rewrite <- mult_plus_distr_l.
+  replace (2 + n) with (n + 2).
+  reflexivity.
+
+  rewrite plus_comm.
+  reflexivity.
+
+  rewrite mult_comm.
+  reflexivity.
+
+  auto.
+  apply Nat.add_1_r.
+Qed.
 
 Theorem regularSum__natSum : forall (n : nat),
   natSum n = regularSum n.
@@ -27,14 +58,7 @@ Proof.
   reflexivity.
 
   unfold regularSum.
-  simpl.
-  unfold regularSum in IHn.
-
-  unfold natSum.
-  unfold natSum in IHn.
+  fold regularSum.
   rewrite <- IHn.
-  
-  rewrite mult_succ_l.
-  
-  rewrite add_1_r.
-  rewrite mult_succ_r.
+  apply natSum_S.
+Qed.
