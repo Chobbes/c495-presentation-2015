@@ -70,15 +70,21 @@ Proof.
   apply Nat.add_1_r.
 Qed.
 
+
+(* Now we can try to show that natSum is the same as regularSum! *)
 Theorem regularSum__natSum : forall (n : nat),
   natSum n = regularSum n.
 Proof.
-  induction n.
-  compute.
-  reflexivity.
+  induction n.  (* We'll show this by induction on n *)
 
-  unfold regularSum.
-  fold regularSum.
+  compute.  (* Base case can just be computed *)
+  reflexivity. (* Reflexivity finishes the current goal *)
+
+  (* Note that we now have an induction hypothesis. *)
+  unfold regularSum. (* We can unfold regularSum *)
+  fold regularSum. (* This took out the S n term, we can fold the rest again *)
+
+  (* Now using our induction hypothesis we can rewrite this to be exactly our lemma! *)
   rewrite <- IHn.
   apply natSum_S.
 Qed.
