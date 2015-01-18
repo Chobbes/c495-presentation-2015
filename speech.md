@@ -6,7 +6,7 @@ Okay, so I am going to be talking a bit about formal verification. There are a f
 - Explain why you should be interested.
 - Very briefly cover some of the methods. We're mostly going to focus on theorem proving, and dependent types.
 - Make proof assistants more accessible. One of the things that I had problems with was understanding just what this thing was. It's not at all clear how any of the pieces fit together unless you find the right resources.
-- Give some rough intuitions about how systems like these work. They're not magic, and in fact if they are magic then that's counterproductive because we can't trust magic.
+- Give some rough intuitions about how systems like these work. They're not magic, and in fact if they were that would be a problem because magic can't be trusted.
 
 
 Preface
@@ -20,13 +20,18 @@ Before we begin I'd like to make sure we're all on the same page with respect to
 
       x :: A
 
-  Means that "x" has the type A. Note that while Haskell uses two colons, one colon is also standard. This will be mixed a bit in the talk, but it should be clear from context.
+  Means that "x" has the type A. Note that while Haskell uses two colons, one colon is also standard. This will be mixed a bit in the talk, but it should be clear from context. Note that "A" can be any type we want.
+
+      x :: Integer
+      y :: [Integer]
+      
+  Would mean that x is an integer, and y is a list of integers.
 
   In languages like these pretty much everything has a type. Even functions. For instance we might say that addition has the type:
 
       (+) :: Integer -> Integer -> Integer
 
-  This may seem peculiar for some of you, but it literally just means that addition takes these two integers as an argument and produces an integer. The arrows are a common notation in type theory, and there is good reason for it as we shall see.
+  This may seem peculiar for some of you, but it literally just means that addition takes these two integers as an argument and produces an integer result. The arrows are a common notation in type theory, and there is good reason for it as we shall see.
 
   Also note that a type may be polymorphic. For instance you can have something like
 
@@ -39,7 +44,7 @@ Before we begin I'd like to make sure we're all on the same page with respect to
 
 - Basic lambda calculus:
 
-  We'll also need to talk a tiny bit about the lambda calculus throughout. More or less you just need to know that lambda calculus consists of lambda terms which can be
+  We'll also need to talk a tiny bit about the lambda calculus. More or less you just need to know that lambda calculus consists of lambda terms which can be
 
   - variables
   - `(\x . t)` where '`t`' is another lambda term (lambda abstraction)
@@ -54,17 +59,18 @@ Before we begin I'd like to make sure we're all on the same page with respect to
       (\x . x)t
       t  -- Substituting the x for the t.
 
+Formal Verification: What it be?
+--------------------------------
 
-What it is
-----------
+Alright! So, what is formal verification? Tautologically speaking formal verification is the use of formal methods to verify properties of programs. In short "proving programs correct".
 
-Alright! So, what is formal verification? Tautologically speaking formal verification is the use of formal methods to verify properties of programs, that is "proving programs correct".
+Formal verification is inherently appealing. You want things to be correct, and work as intended. Bugs might not matter too much depending on the application, after all it's not the end of the world if your whoopy-cushion app crashes every so often, but maybe it is if an ICBM has an unexpected integer overflow. In many cases bugs can result in serious harm, death, and large expenses.
 
-Formal verification is inherently appealing. You want things to be correct, and work as intended. Bugs might not matter too much depending on the application, after all it's not the end of the world if your whoopy-cushion app crashes every so often, but maybe it is if an ICBM has an unexpected integer overflow. In many cases bugs can result in serious harm, death, and large expenses. In this day and age pretty much every device has some form of computer in it. Now if you have ever written a program, or even used any software this should be a terrifying fact. Really you should be afraid to use elevators because it might run Java and somebody doesn't like to check their damn null references. So formal verification is important for these situations. We can't afford for some programs to fail.
+In this day and age pretty much every device has some form of computer in it. If you have ever written a program, or even used any software this should be a terrifying fact! Really you should be afraid to use elevators because it might run Java and somebody doesn't like to check their damn null references. So formal verification is important for these situations. We can't afford for some programs to fail.
 
 A related goal is actually that mathematicians want computers to formally verify proofs as well, particularly since any given theory or paper now consists of pages upon pages worth of proofs which are extremely difficult to check by hand. It'd be nice to have a computer check our logic.
 
-Formal verification can be pursued in a number of ways, such as:
+Formal verification can be pursued in a number of ways:
 
 - Manual labour (Kidnap mathematicians and make them do your dirty work -- expensive, and error prone)
 - Model checking (essentially boils down to checking every possible state of your program and whether or not it adheres to a given property -- proof by exhaustion)
@@ -73,12 +79,12 @@ Formal verification can be pursued in a number of ways, such as:
 
 Formal verification can be done at many, and even multiple levels of abstraction:
 
-- High level: Assuming the low level stuff, does this program do what we want? Are the algorithms correct?
-- Low level: The aerospace industry actually meticulously checks over the machine code spit out by their compilers. It's what's run, so they need to make sure it's squeeky clean. Otherwise we risk planes falling out of the sky.
-- Hardware: Even the design of hardware itself undergoes verification sometimes. For instance Intel is pretty big on this ever since their floating point division bug in one of their processors cost them millions.
+- High level: Are the algorithms correct? Does this program imprement the algorithm correctly?
+- Low level: The aerospace industry actually meticulously checks over machine code spit out by their compilers. It's what's run, so they need to make sure it's squeeky clean. Otherwise we risk planes falling out of the sky.
+- Hardware: Even the design of hardware itself undergoes verification sometimes. For instance Intel is pretty big on this ever since their Pentium floating point division bug cost them millions.
 - And of course you can mix and match all of these levels.
 
-We're going to focus on higher levels of abstraction for the most part. Proving that your algorithms are correct, and assuming that the underlying systems are working fine. Experience tells us they're probably not, but hey! It's better than nothing. Coq does satisfy the de Bruijn criterion, however. All of the parts involved in verifying the correctness of proofs are small and simple -- we'll see this shortly, but first we're going to go over a few examples.
+We're going to focus on higher levels of abstraction for the most part. Proving that your algorithms are correct, and assuming that the underlying systems are working fine. Experience tells us they're probably not, but hey! It's better than nothing. The proof assistant we'll be using does satisfy the de Bruijn criterion, however. I.e., all of the parts involved in verifying the correctness of proofs are small and simple. We'll see this shortly, but first we're going to go over a few examples.
 
 Coq
 ---
