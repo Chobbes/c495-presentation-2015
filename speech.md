@@ -122,7 +122,7 @@ First let's prove that addition of natural numbers is associative.
 
 Being presented with just this code is like a fire-hose. It's much easier to stomach when you can look at the proof state in the proof assistant!
 
-Let's look at something a bit more complicated. Let's show that the sum of natural numbers up to $n$ is equal to $\frac{n \cdot (n + 1)}{2}$. We'll need to import some things right now. Don't worry about it.
+Let's look at something a bit more complicated. Let's show that the sum of natural numbers up to n is equal to n * (n + 1) / 2. We'll need to import some things right now. Don't worry about it.
 
     Require Import List.
     Require Import Coq.Arith.Arith_base.
