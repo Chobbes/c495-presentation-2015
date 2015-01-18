@@ -20,7 +20,7 @@ Before we begin I'd like to make sure we're all on the same page with respect to
 
       x :: A
 
-  Means that "x" has the type A. Note that while Haskell uses two colons, Coq actually uses one. This will be mixed a bit in the talk, but it should be clear from context.
+  Means that "x" has the type A. Note that while Haskell uses two colons, one colon is also standard. This will be mixed a bit in the talk, but it should be clear from context.
 
   In languages like these pretty much everything has a type. Even functions. For instance we might say that addition has the type:
 
