@@ -100,7 +100,7 @@ If you're familiar with functional programming in the ML dialects some of this s
 
 Beyond the typical functional programming, Coq supports a tactics style of proof. This is what looks weird and confusing until you actually walk through an example. What it boils down to is writing down the steps for a math proof. However, in math proofs you often rewrite things explicitly, constantly reminding the reader of the current state of the proof. The proofs in Coq consist of brief tactics which don't include the proof state, and it's pretty much impossible to read at first -- you really need to step through the proofs in Coq because it will show you the proof state.
 
-We'll be using ProofGeneral, which is an emacs mode for interacting with proof assistance. It has three main buffers. The file you're working with, the current goals, and any responses from the proof assistant.
+We'll be using ProofGeneral, which is an emacs mode for interacting with proof assistance. It has three main buffers. The file you're working with, the current goals and the proof state, and any other responses from the proof assistant.
 
 First let's prove that addition of natural numbers is associative.
 
