@@ -311,4 +311,61 @@ data Either a b = Left a | Right b
   \begin{itemize} \item \alert{Every proposition is true, and that's not useful at all!} \end{itemize}
   \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Curry-Howard Example}
+  Say we want to prove $A \rightarrow B \rightarrow A$.
+
+  \begin{itemize}
+  \item C-H claims we just need to provide a function with this type
+  \item<2-> Note that $A$ and $B$ can be ANY type.
+  \item<3-> What could our function be?
+
+\begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
+??? :: a -> b -> a
+\end{lstlisting}
+    
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Curry-Howard Example Continued...}
+
+How about the constant function?
+
+\begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
+const :: a -> b -> a
+const a b = a
+\end{lstlisting}
+
+\pause
+
+\begin{itemize}
+\item This actually makes sense!
+
+  \begin{itemize}
+  \item Given a proof (value) of \texttt{a}, and a proof of \texttt{b}, we can provide a proof for \texttt{a}...
+  \item Just return the proof that was given to us!
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Return of the Lambda}
+
+  \begin{itemize}
+  \item We can rewrite \texttt{const} as a lambda term in the simply typed lambda calculus:
+
+    \[(\lambda x : a, y : b \, . \, x)\]
+
+  \item<2-> This is what Coq is doing behind the scenes...
+
+    \begin{itemize}
+    \item The lambda calculi are really simple.
+    \item Verifying that the terms are valid is ``easy''.
+    \item No matter how complicated the tactics are, which generate the lambda terms they must generate a lambda term which proves the proposition!
+    \item Tactic code can be complex and buggy. It doesn't affect the validity of the proofs.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 \end{document}
