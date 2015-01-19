@@ -79,7 +79,7 @@ Formal verification can be pursued in a number of ways:
 
 Formal verification can be done at many, and even multiple levels of abstraction:
 
-- High level: Are the algorithms correct? Does this program imprement the algorithm correctly?
+- High level: Are the algorithms correct? Does this program implement the algorithm correctly?
 - Low level: The aerospace industry actually meticulously checks over machine code spit out by their compilers. It's what's run, so they need to make sure it's squeeky clean. Otherwise we risk planes falling out of the sky.
 - Hardware: Even the design of hardware itself undergoes verification sometimes. For instance Intel is pretty big on this ever since their Pentium floating point division bug cost them millions.
 - And of course you can mix and match all of these levels.
