@@ -121,8 +121,11 @@ First let's prove that addition of natural numbers is associative.
       reflexivity.  (* This got rid of the 0 term, so we can finish the goal with reflexivity. *)
     
       (* Now we're in the second case. Need to show that given the induction hypothesis it's true for the successor to a *)
-      simpl.        (* Again we can try to simplify. This does some basic evaluation, and tells us that S a + n is the same as S (a + n) *)
-      rewrite IHa.  (* Notice that these aren't quite the same yet. The associativity is different. We can use the induction hypothesis to rewrite one side *)
+      (* Again we can try to simplify. This does some basic evaluation, and tells us that S a + n is the same as S (a + n) *)
+      simpl.
+
+      (* Notice that these aren't quite the same yet. The associativity is different. We can use the induction hypothesis to rewrite one side *)
+      rewrite IHa.
       reflexivity.  (* And again, reflexivity finishes the goal *)
     Qed.
 
