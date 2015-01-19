@@ -84,7 +84,7 @@ Formal verification can be done at many, and even multiple levels of abstraction
 - Hardware: Even the design of hardware itself undergoes verification sometimes. For instance Intel is pretty big on this ever since their Pentium floating point division bug cost them millions.
 - And of course you can mix and match all of these levels.
 
-We're going to focus on higher levels of abstraction for the most part. Proving that your algorithms are correct, and assuming that the underlying systems are working fine. Experience tells us they're probably not, but hey! It's better than nothing. The proof assistant we'll be using does satisfy the de Bruijn criterion, however. I.e., all of the parts involved in verifying the correctness of proofs are small and simple. We'll see this shortly, but first we're going to go over a few examples.
+We're going to focus on higher levels of abstraction for the most part. Proving that your algorithms are correct, and assuming that the underlying systems are working fine. Experience tells us they're probably not, but hey! It's better than nothing. The proof assistant we'll be using does satisfy the de Bruijn criterion, however. I.e., all of the parts involved in verifying the correctness of proofs are small and simple. We'll see this shortly.
 
 Coq
 ---
