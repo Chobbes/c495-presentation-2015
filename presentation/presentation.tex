@@ -181,7 +181,7 @@ showstringspaces=false}
 
   \onslide<5->
 
-  We'll focus on high level stuff mostly!
+  \alert{We'll focus on high level stuff!}
 \end{frame}
 
 \section{Coq}
@@ -205,7 +205,7 @@ showstringspaces=false}
 \begin{frame}
   \frametitle{Examples}
 
-  \huge{MOVING ON TO EXAMPLES!}
+  \alert{\huge{MOVING ON TO EXAMPLES!}}
 \end{frame}
 
 \section{Theory}
@@ -213,6 +213,102 @@ showstringspaces=false}
 \begin{frame}
   \frametitle{Theory 'n Stuff}
 
+ \alert{\huge{Coq is basically just a type-checker!}}
+
 \end{frame}
 
+\begin{frame}
+  \frametitle{Theory 'n Stuff}
+
+  \begin{itemize}
+  \item<1-> What does type checking have to do with proving theorems?
+    \onslide<2->
+
+    \begin{itemize}
+    \item \alert{EVERYTHING due to the Curry-Howard isomorphism!}
+    \end{itemize}
+
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Theory 'n Stuff}
+  \begin{itemize}
+  \item<1-> Curry-Howard isomorphism relates programs to proofs.
+    \begin{itemize}
+    \item Specifically it relates terms of the simply-typed lambda calculus to intuitionistic logic.
+    \item Coq actually uses the ``Calculus of Constructions''. It's another lambda calculus, but has some special sauce which enable quantifiers and has some other nice properties.
+    \item Simply-typed lambda calculus still provides some good intuition, however.
+    \end{itemize}
+
+  \item<2-> Types are propositions. For instance, the type:
+
+\begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
+      a -> b
+\end{lstlisting}
+
+    corresponds to the proposition $a \rightarrow b$. ``$a$ implies $b$''.
+
+  \item<3-> A program inhabiting that type is an existence proof of the proposition.
+
+    \begin{itemize}
+    \item Roughly speaking the program implements the proposition, so it demonstrates that the proposition is true.
+    \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Curry-Howard: A Brief Introduction}
+
+  \begin{itemize}
+  \item<1-> Any type which is inhabited (has a value) represents a provable proposition
+  \item<2-> Implication is represented with ``\texttt{->}'' in types
+
+    \begin{itemize}
+    \item If you have a value of the first type, then you can produce a value of the second type!
+    \end{itemize}
+
+  \item<3-> Conjunction ``$A \wedge B$'' corresponds to a tuple ``\texttt{(a, b)}''
+
+    \begin{itemize}
+    \item Both \texttt{a} and \texttt{b} have to be inhabited in order for \texttt{(a, b)} to be inhabited.
+    \end{itemize}
+
+  \item<4-> Disjunction ``$A \vee B$'' corresponds to \texttt{Either a b}
+
+\begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
+data Either a b = Left a | Right b
+\end{lstlisting}
+
+    If either \texttt{a} or \texttt{b} has a value then \texttt{Either a b} can have a value.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Curry-Howard: Not Quite Brief Enough for one Slide}
+
+  \begin{itemize}
+  \item<1-> False is an uninhabited type. We call this type \texttt{Void}
+    \begin{itemize}
+    \item If the type can't have a value, then it can not be ``true''.
+    \item Any false proposition is equivalent to \texttt{Void}, e.g., $a \rightarrow b$.
+    \end{itemize}
+  \item<2-> Negation is given by \texttt{a -> Void}
+
+    \begin{itemize}
+    \item If \texttt{a} is \texttt{Void} then it is inhabited by \texttt{id :: Void -> Void}
+    \item Otherwise \texttt{a -> Void} must be uninhabited, since a function must return a value when given a value.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Problem of Non-termination}
+  \begin{itemize}
+  \item If programs don't have to terminate every type is inhabited by an infinite loop!
+  \begin{itemize} \item \alert{Every proposition is true, and that's not useful at all!} \end{itemize}
+  \end{itemize}
+\end{frame}
 \end{document}
