@@ -1,4 +1,3 @@
-
 \documentclass{beamer}
 
 \usepackage{hyperref}
@@ -52,37 +51,73 @@ showstringspaces=false}
   \end{itemize}
 \end{frame}
 
-
 \section{Preface}
 
 \begin{frame}[fragile]
   \frametitle{Type Signatures}
 
-    \begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
-      x :: A
-    \end{lstlisting}
+  \texttt{x} has type \texttt{A}:
+  \begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
+    x :: A
+  \end{lstlisting}
 
-    \begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
-      (+) :: Integer -> Integer -> Integer
-    \end{lstlisting}
+  \pause
+
+  \texttt{x} is an integer, \texttt{y} is a list of integers.
+  \begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
+    x :: Integer
+    y :: [Integer]
+  \end{lstlisting}
+
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Type Signatures Continued...}
+
+  Functions have types too!
 
   \begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
-    id :: a -> a
+    (+) :: Integer -> Integer -> Integer
   \end{lstlisting}
-\end{frame}
 
+\end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Type Signatures Continued...}
+
+  Types can also be polymorphic. The identity function, \texttt{id}, may take any type as an argument.
 
   \begin{lstlisting}[frame=single, language=Haskell, breaklines=true]
     id :: a -> a
     id x = x
   \end{lstlisting}
 \end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Lambda Calculus}
+
+  Lambda terms:
+
+  \begin{itemize}
+  \item Variables: ``\texttt{x}'' and such
+  \item Lambda abstraction: $(\lambda x . t)$ where $t$ is another lambda term. $x$ is an argument, $t$ is the ``body''
+  \item Application: $(ts)$
+  \end{itemize}
+
+  Combine as you see fit!
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Beta Reduction}
+
+  Beta reduction is just substitution.
+
+  \[\mathtt{id} = (\lambda x . x)\]
+
+  Substituting $x$ for $t$...
+
+  \[(\lambda x . x) t = t\]
+\end{frame}
+
 
 \end{document}
