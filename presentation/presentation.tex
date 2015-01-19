@@ -119,5 +119,64 @@ showstringspaces=false}
   \[(\lambda x . x) t = t\]
 \end{frame}
 
+\section{Formal Verification: What it be?}
+
+\begin{frame}
+  \frametitle{Formal Verification: What it be?}
+
+  The use of formal methods to prove that programs are correct
+
+  \begin{itemize}
+  \item<2-> Want programs to be correct
+    \begin{itemize}
+    \item Almost everything has a computer in it now
+    \item Incorrect programs can be dangerous
+    \item Bugs can be expensive
+    \end{itemize}
+  \item<3-> Mathematicians want computers to verify their proofs as well.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Some Methods}
+
+  \begin{itemize}
+  \item<1-> Checking by hand... Manual labor :(
+  \item<2-> Model checking
+    \begin{itemize}
+    \item Essentially checking every possible state of your program
+    \item ``Proof by exhaustion''
+    \item This can be computationally expensive
+    \item Works best on small F.S.M.s.
+    \end{itemize}
+  \item<3-> Type Checking
+    \begin{itemize}
+    \item Types provide guarantees about how values behave
+    \item Most languages do this badly (Java, Python)
+    \item Some are good, but still limited (Haskell)
+    \end{itemize}
+  \item<4-> Theorem Proving
+    \begin{itemize}
+    \item Mathematical proofs for great justice
+    \item Use the computer to check the proofs
+    \item This actually boils down to extended type checking
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Levels of Abstraction}
+
+  \begin{itemize}
+  \item<1-> High Level: Algorithms? Correct implementation?
+  \item<2-> Low Level: Check machine code?
+  \item<3-> Hardware?
+  \item<4-> Mix and match!
+  \end{itemize}
+
+  \onslide<5->
+
+  We'll focus on high level stuff mostly!
+\end{frame}
 
 \end{document}
