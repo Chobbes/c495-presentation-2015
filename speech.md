@@ -91,8 +91,8 @@ Coq
 
 We're going to look at some examples of a proof assistant in action. The one we'll be using is one of the staples called Coq. So named because of:
 
-- Tradition of naming programming languages after animals (OCaml). Xavier Leroy created OCaml and Coq
-- French. Xavier Leroy is from France. Words are different there, I am told
+- Tradition of naming programming languages after animals (OCaml).
+- French. Coq had its start in France. Words are different there, I am told
 - CoC: Calculus of Constructions. The theory upon which Coq is based
 - Thierry Coquand. Creator of the Calculus of Constructions
 - The universe is conspiring against us here!
